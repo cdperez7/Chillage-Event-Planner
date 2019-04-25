@@ -90,9 +90,11 @@
                         console.log(eventURL);
                         $eventListItem.append(
                             "<span class='label label-primary'>" +
-                            "<a href='" + eventURL + "'>" + title + "</a>" +
-                            "</span>"
-                            );
+                            "</span>" +
+                            "<strong> " +
+                            title +
+                            "</strong>"
+                        );
                     }
 
                     var eventImage = eventInfo.image.medium.url;
