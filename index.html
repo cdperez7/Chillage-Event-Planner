@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>project One</title>
+    <title>Project One</title>
 
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
@@ -26,12 +26,12 @@
 </head>
 
 <body>
-
+        
     <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top py-0">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img id="logo" src="" alt="logo">
+            <a class="navbar-brand py-0" href="#">
+                <img id="logo1" src="/assets/images/Potential Logo 3.png" style="height:50px;width:200px;" alt="logo">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
                 <span class="navbar-toggler-icon"></span>
@@ -58,27 +58,44 @@
 
 
     <!--JUMBOTRON-->
-    <div class="jumbotron text-center">
-        <h1 class="display-3">CHILLAGE</h1>
-        <img src="assets/images/fb-logo.jpg.png" alt="Image here">
+    <!-- <div class="jumbotron text-center col-md-6">
+        <h1 class="display-3"></h1>
+        <img src="assets/images/Potential Logo.PNG" style="height:200px;height:200px;" alt="Image here">
         <p class="lead">The ChiTown’s Ultimate Events Spot</p>
         <a class="btn btn-primary btn-lg" href="#" role="button">Explore</a>
-    </div>
+    </div> -->
 
 
     <!-- JUMBOTRON -->
     <div class="row">
-        <div class="col-md-12">
-            <div class="jumbotron jumbotron-fluid" id="jumbotron">
+            <div class="jumbotron text-center col-md-6 bg-white">
+                    <h1 class="display-3"></h1>
+                    <img src="assets/images/Potential Logo.PNG" style="height:200px;height:200px;" alt="Image here">
+                    <p class="lead">The ChiTown’s Ultimate Events Spot</p>
+                    <a class="btn btn-primary btn-lg" href="#" role="button">Explore</a>
+                </div>
+        <div class="col-md-6">
+            <div class="jumbotron jumbotron-fluid bg-white" id="jumbotron">
                 <div class="container">
 
                     <div class="input-group input-group-lg">
-                        <input type="text" id="inputEvent" class="form-control" aria-label="Sizing example input"
+                        <input type="text" id="inputEvent" class="form-control mb-2" aria-label="Sizing example input"
                             placeholder="Zip Code" aria-describedby="inputGroup-sizing-sm">
                         <div class="input-group input-group-lg">
-                            <input type="text" id="inputEvent" class="form-control" aria-label="Sizing example input"
+                            <input type="text" id="inputEvent" class="form-control mb-2" aria-label="Sizing example input"
                                 placeholder="Search Events" aria-describedby="inputGroup-sizing-sm">
                         </div>
+
+                        <div class="input-group input-group-lg">
+                                <input type="text" id="inputEvent" class="form-control" aria-label="Sizing example input"
+                                    placeholder="Price range" aria-describedby="inputGroup-sizing-sm">
+                            </div>
+                        
+                        <div class="mx-auto" id="btnBox">
+                                <button type="button" id="search" class="btn btn-primary btn-lg searchNew mt-3">Let's
+                                    go!
+                                </button>
+                            </div>
                     </div>
                 </div>
             </div>
@@ -88,11 +105,11 @@
 
     <!-- SEARCH BUTTON -->
     <div class="row">
-        <div class="mx-auto" id="btnBox">
+        <!-- <div class="mx-auto" id="btnBox">
             <button type="button" id="search" class="btn btn-primary btn-lg searchNew">Let's
                 go!
             </button>
-        </div>
+        </div> -->
     </div>
 
     <div class="row" style="padding: 1%;"></div>
@@ -147,7 +164,7 @@
 
         <div class="container text-center">
     
-            <p id="footer">© Sujit Shah, Connor Perez, Patricia dalinis, Dan Longo  2019</p>
+            <p id="footer">© Sujit Shah, T Connor Perez, Patricia dalinis, Dan Longo  2019</p>
     
         </div>
     
@@ -157,7 +174,8 @@
     <script type=text/javascript src="assets/javascript/java.js"></script>
 
      <!-- API GOOGLE MAPS-->
-    <script src="https://maps.googleapis.com/maps/api/js?"></script>
+     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB28biNcaTY2Uv-AzmrOI7XI5ZCJVI5BEQ&callback=initMap"
+     async defer></script> -->
 
 
 
