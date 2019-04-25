@@ -1,71 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>project One</title>
+
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script> -->
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <title>Project One</title>
+
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" -->
+    
+
+
 </head>
 
 <body>
-    <div class="row">
-        <nav>
-            <div class="nav-wrapper #42a5f5 blue lighten-1">
-                <a href="#" class="brand-logo center">Chillage (+logo tbd)</a>
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="sass.html">About</a></li>
-                    <li><a href="badges.html">Contact</a></li>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img id="logo" src="" alt="logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a href="" class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link" href="#">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link" href="#">Contact</a>
+                    </li>
                 </ul>
             </div>
-        </nav>
+        </div>
+    </nav>
+
+
+    <!--JUMBOTRON-->
+    <div class="jumbotron text-center">
+        <h1 class="display-3">CHILLAGE</h1>
+        <img src="assets/images/fb-logo.jpg.png" alt="Image here">
+        <p class="lead">The ChiTown’s Ultimate Events Spot</p>
+        <a class="btn btn-primary btn-lg" href="#" role="button">Explore</a>
     </div>
 
-    <div class="container">
-        <div class="row">
-            <form class="col s12">
-                <div class="row">
-                    <div class="input-field col s2">
-                        <input id="zip-code" type="text" class="validate">
-                        <label for="zip-code">Zip Code</label>
+
+    <!-- JUMBOTRON -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="jumbotron jumbotron-fluid" id="jumbotron">
+                <div class="container">
+
+                    <div class="input-group input-group-lg">
+                        <input type="text" id="inputEvent" class="form-control" aria-label="Sizing example input"
+                            placeholder="Zip Code" aria-describedby="inputGroup-sizing-sm">
+                        <div class="input-group input-group-lg">
+                            <input type="text" id="inputEvent" class="form-control" aria-label="Sizing example input"
+                                placeholder="Search Events" aria-describedby="inputGroup-sizing-sm">
+                        </div>
                     </div>
-            </form>
-
-            <div class="input-field col s5">
-                <select>
-                    <option value="" disabled selected>Choose your preferred event type</option>
-                    <option value="1">Music</option>
-                    <option value="2">Food</option>
-                    <option value="3">Sports</option>
-                    <option value="3">Art</option>
-                    <option value="3">Tours</option>
-                    <option value="3">Comedy</option>
-                </select>
+                </div>
             </div>
-
-            <div class="input-field col s3">
-                <select>
-                    <option value="" disabled selected>Choose your price range</option>
-                    <option value="1">$0-$25</option>
-                    <option value="2">$26-50</option>
-                    <option value="3">$51-75</option>
-                    <option value="3">$75+</option>
-                </select>
-            </div>
-
-            <button class="btn waves-effect waves-light #42a5f5 blue lighten-1" type="submit" name="action">Submit</button>
-
-
         </div>
     </div>
 
 
+    <!-- SEARCH BUTTON -->
+    <div class="row">
+        <div class="mx-auto" id="btnBox">
+            <button type="button" id="search" class="btn btn-primary btn-lg searchNew">Let's
+                go!
+            </button>
+        </div>
+    </div>
 
+    <div class="row" style="padding: 1%;"></div>
+    
+    <!-- WEATHER DISPLAY -->
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title" id="temperature">Weather</h5>
+                    <p class="card-text" id="max-min-temp"></p>
+                    <p class="card-text" id="wcondition"></p>
+                    <p class="card-text" id="wind"></p>
+                    <p class="card-text" id="humidity"></p>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- MAP DISPLAY -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body mapGoogle">
+                    <div>
+                        <div id="map-display"></div>
+                    </div>
+                    <div class="col-md-2 events">
+                        <button type="button" class="btn btn-light" id="Music">MUSIC</button>
+                    </div>
+                    <div class="col-md-2 events">
+                        <button type="button" class="btn btn-light" id="Food">FOOD</button>
+                    </div>
+                    <div class="col-md-2 events">
+                        <button type="button" class="btn btn-light" id="Sports">SPORTS</button>
+                    </div>
+                    <div class="col-md-2 events">
+                        <button type="button" class="btn btn-light" id="Comedy">COMEDY</button>
+                    </div>
+                    <div class="col-md-2 events">
+                        <button type="button" class="btn btn-light" id="Sports">Tours</button>
+                    </div>
+                    <div class="col-md-2 events">
+                        <button type="button" class="btn btn-light" id="Comedy">Art</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="padding: 1%;"></div>
+    <footer class="footer">
+
+        <div class="container text-center">
+    
+            <p id="footer">© Sujit Shah, Connor Perez, Patricia dalinis, Dan Longo  2019</p>
+    
+        </div>
+    
+     </footer>
+
+      <!-- LINK TO JS FILE -->
     <script type=text/javascript src="assets/javascript/java.js"></script>
+
+     <!-- API GOOGLE MAPS-->
+    <script src="https://maps.googleapis.com/maps/api/js?"></script>
+
+
 
 
 </body>
