@@ -75,38 +75,31 @@
 
             function updatePage(localEvent) {
                 console.log(localEvent);
+                var events = localEvent.events.event;
+                for (var i = 0; i < events.length; i++) {
 
-                for (var i = 0; i < localEvent.length; i++) {
-
-                    var eventInfo = localEvent.event.events[i];
-
-                    var eventCount = i + 1;
+                    var eventInfo = events[i];
 
                     var $eventList = $("<ul>");
                     $eventList.addClass("list-group");
 
                     $("#event-view").append($eventList);
 
-                    var title = eventInfo.getElementById("title");
-                    console.log("Title: ", title);
+                    var title = eventInfo.title;
+                    console.log(title);
+                    var $eventListItem = $("<li class='list-group-item eventTitle'>");
 
-                    // var $eventListItem = $("<li class='list-group-item eventTitle'>");
+                    if (title) {
+                        $eventListItem.append(
+                            "<span class='label label-primary'>" +
+                            "</span>" +
+                            "<strong> " +
+                            title +
+                            "</strong>"
+                        );
+                    }
 
-                    // if (title && title.value) {
-                    //     console.log(title.value);
-                    //     $eventListItem.append(
-                    //         "<span class='label label-primary'>" +
-                    //         eventCount +
-                    //         "</span>" +
-                    //         "<strong> " +
-                    //         title.value +
-                    //         "</strong>"
-                    //     );
-                    // }
-
-                    // $eventList.append($eventListItem);
-
-                    // Below is not accurate...
+                    $eventList.append($eventListItem);
 
                     // var title = $("<h3>").text(eventInfo.title);
                     // // var eventURL = $("<a>").attr("href", response[event, "url"]).append(title);
