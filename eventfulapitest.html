@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Eventful API Test Page</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://api.eventful.com/js/api"></script>
+
+    <style type="text/css">
+        button,
+        div,
+        form,
+        input {
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <h1>Find Local Events</h1>
+
+    <form id="event-form">
+
+        <label for="event-input">Event Keyword:</label>
+        <input type="text" id="event-type">
+
+        <label for="location-input">Zip Code:</label>
+        <input type="text" id="zip-code">
+
+        <input id="search-event" type="submit" value="Search">
+
+    </form>
+
+    <div class="container">
+
+        <div id="event-view"></div>
+
+
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://api.eventful.com/js/api"></script> -->
+
+        <script>
+            function buildQueryURL() {
+                var queryURL = "https://api.eventful.com/json/events/search?...&";
+
+                var queryParams = {
+                    "app_key": "Cc5b498hZCQZ9P8m",
+                    "oauth_fields": "4c420762561519b874ff",
+                    "page_numbers": "1",
+                    "page_size": "5",
+                }
+
+                queryParams.q = $("#event-type")
+                    .val()
+                    .trim();
+
+                var zipCode = $("#zip-code")
+                    .val()
+                    .trim();
+
+                if (parseInt(zipCode)) {
+                    queryParams.location = zipCode;
+                }
+
+                console.log("---------------\nURL: " + queryURL + "\n---------------");
+                console.log(queryURL + $.param(queryParams));
+                return queryURL + $.param(queryParams);
+            }
+
+            function updatePage(localEvent) {
+                console.log(localEvent);
+
+                for (var i = 0; i < localEvent.length; i++) {
+
+                    var eventInfo = localEvent.event.events[i];
+
+                    var eventCount = i + 1;
+
+                    var $eventList = $("<ul>");
+                    $eventList.addClass("list-group");
+
+                    $("#event-view").append($eventList);
+
+                    var title = eventInfo.getElementById("title");
+                    console.log("Title: ", title);
+
+                    // var $eventListItem = $("<li class='list-group-item eventTitle'>");
+
+                    // if (title && title.value) {
+                    //     console.log(title.value);
+                    //     $eventListItem.append(
+                    //         "<span class='label label-primary'>" +
+                    //         eventCount +
+                    //         "</span>" +
+                    //         "<strong> " +
+                    //         title.value +
+                    //         "</strong>"
+                    //     );
+                    // }
+
+                    // $eventList.append($eventListItem);
+
+                    // Below is not accurate...
+
+                    // var title = $("<h3>").text(eventInfo.title);
+                    // // var eventURL = $("<a>").attr("href", response[event, "url"]).append(title);
+                    // // // var eventImage = $("<img>").attr("src", response.image[medium.url]);
+                    // // var description = $("<p>").text(response[event, "description"]);
+                    // // var startTime = $("<p>").text(response[event, "start_time"]);
+                    // // var venueAddress = $("<p>").text(response[event, "venue_address"]);
+
+                    // // $("#event-view").empty();
+                    // $("#event-view").append(title);
+                    // // eventURL, description, startTime, venueAddress);
+                }
+            }
+
+            function clear() {
+                $("#event-view").empty();
+            }
+
+            $("#search-event").on("click", function (event) {
+                event.preventDefault();
+
+                clear();
+
+                var queryURL = buildQueryURL();
+
+                $.ajax({
+                    url: queryURL,
+                    dataType: "jsonp",
+                    method: "GET"
+                }).then(updatePage);
+            });
+
+
+            // function displayEventInfo() {
+
+            //     var eventKey = "";
+            //     var location = "";
+            //     var queryURL = "https://api.eventful.com/json/events/search?...";
+            //     // &keywords=" + eventKey + "&location=" + location + "&date=Future&app_key=Cc5b498hZCQZ9P8m&oauth_fields=4c420762561519b874ff&page_number=1&page_size=5";
+
+
+
+            //     $.ajax({
+            //         url: queryURL,
+            //         dataType: "jsonp",
+            //         method: "GET"
+            //     }).then(function (response) {
+            //         console.log(response);
+
+            //         var title = $("<h3>").text(response[event, "title"]);
+            //         var eventURL = $("<a>").attr("href", response[event, "url"]).append(title);
+            //         // var eventImage = $("<img>").attr("src", response.image[medium.url]);
+            //         var description = $("<p>").text(response[event, "description"]);
+            //         var startTime = $("<p>").text(response[event, "start_time"]);
+            //         var venueAddress = $("<p>").text(response[event, "venue_address"]);
+
+            //         // $("#event-view").empty();
+            //         $("#event-view").append(eventURL, description, startTime, venueAddress);
+
+            //     });
+            // }
+
+            // $("#search-event").on("click", function (event) {
+            //     event.preventDefault();
+
+            //     $("#event-type").val().trim();
+            //     $("#zip-code").val().trim();
+
+            //     displayEventInfo();
+            // });
+
+            // displayEventInfo();
+        </script>
+
+    </div>
+
+</body>
+
+</html>
