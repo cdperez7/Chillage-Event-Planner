@@ -1,10 +1,6 @@
-$(document).ready(function(){
-    $('select').formSelect();
-  });
 function buildQueryURL() {
-
 }
-var queryParams = {"api-key": "AIzaSyB8I1jYCzLpdFheT0Fdk2XpdlzpeHJhJwE"};
+var queryParams = {"api-key": "AIzaSyAB2nCG4mrdrlW6j6nJ1cY9LB6NZaRZ7OI"};
 var queryURL = "https://www.google.com/maps/@?api=1&map_action=map";
 
 $.ajax({
@@ -16,6 +12,7 @@ $.ajax({
   console.log(queryURL);
 });
 
+var firebase = new Firebase("<https://project-1-8adbf.firebaseio.com>")
   var config = {
     apiKey: "AIzaSyB28biNcaTY2Uv-AzmrOI7XI5ZCJVI5BEQ",
     authDomain: "project-1-8adbf.firebaseapp.com",
