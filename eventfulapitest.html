@@ -85,37 +85,34 @@
                     console.log(title);
                     var $eventListItem = $("<li class='list-group-item eventTitle'>");
 
-                    if (title) {
-                        $eventListItem.append(
-                            "<span class='label label-primary'>" +
-                            "</span>" +
-                            "<strong> " +
-                            title +
-                            "</strong>"
-                        );
-                    }
-
                     var eventURL = eventInfo.url;
                     if (eventURL) {
                         console.log(eventURL);
-                        $eventListItem.attr("<a href='" + eventURL + "'>" + eventURL + "</a>").append(title);
+                        $eventListItem.append(
+                            "<span class='label label-primary'>" +
+                            "<a href='" + eventURL + "'>" + title + "</a>" +
+                            "</span>"
+                            );
                     }
 
-                    // var eventImage = $("<img>").attr("src", response.image[medium.url]);
+                    var eventImage = eventInfo.image.medium.url;
+                    if (eventImage) {
+                        $eventListItem.append("<img src=" + eventImage + ">");
+                    }
 
                     var description = eventInfo.description;
                     if (description) {
-                        $eventListItem.append("<p>" + description + "</p>");
+                        $eventListItem.append("<p>" + "Description: " + description + "</p>");
                     }
 
                     var startTime = eventInfo.start_time;
                     if (startTime) {
-                        $eventListItem.append("<p>" + startTime + "</p>");
+                        $eventListItem.append("<p>" + "Start Time: " + startTime + "</p>");
                     }
 
                     var venueAddress = eventInfo.venue_address;
                     if (venueAddress) {
-                        $eventListItem.append("<p>" + venueAddress + "</p>");
+                        $eventListItem.append("<p>" + "Location: " + venueAddress + "</p>");
                     }
 
                     $eventList.append($eventListItem);
