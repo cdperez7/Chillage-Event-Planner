@@ -8,7 +8,12 @@ nav{
     width: auto;
 }
 
-body{
+/* body{ */
     /* background-image: url("../images/Potential\ Logo.PNG"); */
-}
+/* } */
 
+
+#map {
+    height: 400px;
+    width: 100%;
+}

@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
+      <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAB2nCG4mrdrlW6j6nJ1cY9LB6NZaRZ7OI&callback=initMap">
+      </script>
     <style>
       /* Set the size of the div element that contains the map */
       #map {
@@ -14,23 +17,47 @@
     <!--The div element for the map -->
     <div id="map"></div>
     <script>
-// Initialize and add the map
-function initMap() {
-  // The location of Uluru
-  var uluru = {lat: -25.344, lng: 131.036};
-  // The map, centered at Uluru
-  var map = new google.maps.Map(
-      document.getElementById('map'), {zoom: 4, center: uluru});
-  // The marker, positioned at Uluru
-  var marker = new google.maps.Marker({position: uluru, map: map});
+
+
+// ADD IN LOCATION
+// UPDATE WITH MY API KEY TO TEST OUT NEW LOCATIONS
+// CHECK EVENT API TO SEE IF IT RETURNS COORDINATES FOR OTHER LOCATIONS
+var locations = [
+  ['Chicago', -33.890542, 151.274856, 4],
+  ['Coogee Beach', -33.923036, 151.259052, 5],
+  ['Cronulla Beach', -34.028249, 151.157507, 3],
+  ['Manly Beach', -33.80010128657071, 151.28747820854187, 2],
+  ['Maroubra Beach', -33.950198, 151.259302, 1]
+];
+
+var map = new google.maps.Map(document.getElementById('map'), {
+  zoom: 10,
+  center: new google.maps.LatLng(-33.92, 151.25),
+  mapTypeId: google.maps.MapTypeId.ROADMAP
+});
+
+var infowindow = new google.maps.InfoWindow();
+
+var marker, i;
+
+for (i = 0; i < locations.length; i++) {  
+  marker = new google.maps.Marker({
+    position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+    map: map
+  });
+
+  google.maps.event.addListener(marker, 'click', (function(marker, i) {
+    return function() {
+      infowindow.setContent(locations[i][0]);
+      infowindow.open(map, marker);
+    }
+  })(marker, i));
 }
 
-
 function buildQueryURL() {
-    var queryURL = "https://www.google.com/maps/@?api=1&map_action=map";
+    var queryURL = "https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyAB2nCG4mrdrlW6j6nJ1cY9LB6NZaRZ7OI";
     var queryParams = {"api-key": "AIzaSyAB2nCG4mrdrlW6j6nJ1cY9LB6NZaRZ7OI"};
   
-
 $.ajax({
   url: queryURL,
   method: "GET",
@@ -40,14 +67,14 @@ $.ajax({
   console.log(queryURL);
 })
 }
+buildQueryURL();
+console.log("working")
     </script>
-    <script>firebasemap.js</script>
+    <!-- <script src = "firebasemap.js"></script> -->
+    
     <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAB2nCG4mrdrlW6j6nJ1cY9LB6NZaRZ7OI&callback=initMap">
-    // </script>
-
+    <script src="project1.js"></script>
   </body>
   
 </html>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Project One</title>
+    <title>Chillage</title>
 
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
@@ -15,12 +15,10 @@
         integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
         crossorigin="anonymous"></script> -->
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" -->
-    
+
+
 
 
 </head>
@@ -72,32 +70,30 @@
                     <h1 class="display-3"></h1>
                     <img src="assets/images/Potential Logo.PNG" style="height:200px;height:200px;" alt="Image here">
                     <p class="lead">The ChiTown’s Ultimate Events Spot</p>
-                    <a class="btn btn-primary btn-lg" href="#" role="button">Explore</a>
+                    <a class="btn btn-primary btn-lg" href="#explore" role="button">Explore</a>
                 </div>
         <div class="col-md-6">
             <div class="jumbotron jumbotron-fluid bg-white" id="jumbotron">
-                <div class="container">
+                
+                <div class="container" id="event-form">
+                    <div class="input-group input-group-lg">
+                        <input for="event-input" type="text" id="event-type" class="form-control mb-2"
+                            aria-label="Sizing example input" placeholder="Event Keyword"
+                            aria-describedby="inputGroup-sizing-sm">
+                    </div>
 
                     <div class="input-group input-group-lg">
-                        <input type="text" id="inputEvent" class="form-control mb-2" aria-label="Sizing example input"
-                            placeholder="Zip Code" aria-describedby="inputGroup-sizing-sm">
-                        <div class="input-group input-group-lg">
-                            <input type="text" id="inputEvent" class="form-control mb-2" aria-label="Sizing example input"
-                                placeholder="Search Events" aria-describedby="inputGroup-sizing-sm">
-                        </div>
+                        <input for="location-input" type="text" id="zip-code" class="form-control mb-2"
+                            aria-label="Sizing example input" placeholder="Search Events"
+                            aria-describedby="inputGroup-sizing-sm">
+                    </div>
 
-                        <div class="input-group input-group-lg">
-                                <input type="text" id="inputEvent" class="form-control" aria-label="Sizing example input"
-                                    placeholder="Price range" aria-describedby="inputGroup-sizing-sm">
-                            </div>
-                        
-                        <div class="mx-auto" id="btnBox">
-                                <button type="button" id="search" class="btn btn-primary btn-lg searchNew mt-3">Let's
-                                    go!
-                                </button>
-                            </div>
+                    <div class="mx-auto" id="btnBox">
+                        <button id="search-event" type="submit" class="btn btn-primary btn-lg searchNew mt-3">Let's
+                            Go!</button>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
@@ -114,47 +110,24 @@
 
     <div class="row" style="padding: 1%;"></div>
     
-    <!-- WEATHER DISPLAY -->
+    <!-- EVENTS DISPLAY -->
     <div class="row">
         <div class="col-md-6">
             <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title" id="temperature">Weather</h5>
-                    <p class="card-text" id="max-min-temp"></p>
-                    <p class="card-text" id="wcondition"></p>
-                    <p class="card-text" id="wind"></p>
-                    <p class="card-text" id="humidity"></p>
-                </div>
+                <div class="card-body" id="event-view"></div>
             </div>
         </div>
 
 
         <!-- MAP DISPLAY -->
+        <!-- <div style="overflow:hidden;width: 700px;position: relative;"><iframe width="700" height="440" src="https://maps.google.com/maps?width=700&amp;height=440&amp;hl=en&amp;q=Chicago+(Title)&amp;ie=UTF8&amp;t=&amp;z=10&amp;iwloc=B&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><div style="position: absolute;width: 80%;bottom: 10px;left: 0;right: 0;margin-left: auto;margin-right: auto;color: #000;text-align: center;"><small style="line-height: 1.8;font-size: 2px;background: #fff;">Powered by <a href="https://embedgooglemaps.com/it/">Embedgooglemaps.com/it/</a> & <a href="https://willoughby-pr.co.uk/">gmailbulkemail</a></small></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div><br /> -->
         <div class="col-md-6">
             <div class="card">
                 <div class="card-body mapGoogle">
                     <div>
-                        <div id="map-display"></div>
+                        <div id="map" style="clear:both;"></div> 
+                        
                     </div>
-                    <div class="col-md-2 events">
-                        <button type="button" class="btn btn-light" id="Music">MUSIC</button>
-                    </div>
-                    <div class="col-md-2 events">
-                        <button type="button" class="btn btn-light" id="Food">FOOD</button>
-                    </div>
-                    <div class="col-md-2 events">
-                        <button type="button" class="btn btn-light" id="Sports">SPORTS</button>
-                    </div>
-                    <div class="col-md-2 events">
-                        <button type="button" class="btn btn-light" id="Comedy">COMEDY</button>
-                    </div>
-                    <div class="col-md-2 events">
-                        <button type="button" class="btn btn-light" id="Sports">Tours</button>
-                    </div>
-                    <div class="col-md-2 events">
-                        <button type="button" class="btn btn-light" id="Comedy">Art</button>
-                    </div>
-
                 </div>
             </div>
         </div>
@@ -164,18 +137,29 @@
 
         <div class="container text-center">
     
+<<<<<<< Updated upstream
             <p id="footer">© Sujit Shah, T Connor Perez, Patricia dalinis, Dan Longo  2019</p>
+=======
+            <p id="footer">© 2019  Sujit Shah, Connor Perez, Patricia Dalinis, Dan Longo</p>
+>>>>>>> Stashed changes
     
         </div>
     
      </footer>
 
-      <!-- LINK TO JS FILE -->
-    <script type=text/javascript src="assets/javascript/java.js"></script>
 
-     <!-- API GOOGLE MAPS-->
-     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB28biNcaTY2Uv-AzmrOI7XI5ZCJVI5BEQ&callback=initMap"
-     async defer></script> -->
+    <!-- LINK TO Java/JS FILE -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/javascript/java.js"></script>    
+
+    
+    <!-- EVENTFUL API -->
+    <script type="text/javascript" src="https://api.eventful.com/js/api"></script>
+    
+    <!-- API GOOGLE MAPS -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB28biNcaTY2Uv-AzmrOI7XI5ZCJVI5BEQ&callback=initMap"></script>
+
+
 
 
 
