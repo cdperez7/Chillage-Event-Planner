@@ -1,8 +1,24 @@
 // Main Google Maps function
+function initMap() {
+var map = new google.maps.Map(document.getElementById('map'), {
+  zoom: 10,
+  center: {lat: -25.344, lng: 131.036},
+  mapTypeId: google.maps.MapTypeId.ROADMAP
+});
 
+var infowindow = new google.maps.InfoWindow();
+
+var marker, i;
+
+setTimeout(function () {
+
+}, 1000);
+};
+
+initMap();
 
 // Eventful API & Functions
-$(document).ready(function() {
+$(document).ready(function () {
   function buildQueryURL() {
     var queryURL = "https://api.eventful.com/json/events/search?...&";
 
@@ -32,8 +48,8 @@ $(document).ready(function() {
 
   function updatePage(localEvent) {
 
-  //   var marker = new google.maps.Marker({ position: uluru });
-  // marker.setMap(map);
+    //   var marker = new google.maps.Marker({ position: uluru });
+    // marker.setMap(map);
 
     console.log(localEvent);
     var events = localEvent.events.event;
@@ -55,17 +71,12 @@ $(document).ready(function() {
         console.log(eventURL);
         $eventListItem.append(
           "<span class='label label-primary'>" +
-            "</span>" +
-            "<strong> " +
-            title +
-            "</strong>"
+          "</span>" +
+          "<strong> " +
+          title +
+          "</strong>"
         );
       }
-
-      // var eventImage = eventInfo.image.medium.url;
-      // if (eventImage) {
-      //   $eventListItem.append("<img src=" + eventImage + ">");
-      // }
 
       var description = eventInfo.description;
       if (description) {
@@ -84,24 +95,27 @@ $(document).ready(function() {
 
       var latlong = {
         lat: parseFloat(eventInfo.latitude),
-        lng: parseFloat( eventInfo.longitude)
+        lng: parseFloat(eventInfo.longitude)
       };
 
       console.log(latlong);
-
-      var marker = new google.maps.Marker({ position: latlong });
+      }
+    
+      var marker = new google.maps.Marker({
+        position: latlong
+      });
       marker.setMap(map);
 
       $eventList.append($eventListItem);
-    }
-  }
+    };
+  
   // Google Communication
 
   //   var infowindow = new google.maps.InfoWindow();
 
   //   var marker, i;
 
-    // var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+  // var map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
   //   var marker = new google.maps.Marker({
   //       position: myLatlng,
@@ -117,13 +131,12 @@ $(document).ready(function() {
   //   }
 
   //   initMap();
-  // }
 
   function clear() {
     $("#event-view").empty();
   }
 
-  $("#search-event").on("click", function(event) {
+  $("#search-event").on("click", function (event) {
     event.preventDefault();
 
     clear();
@@ -136,4 +149,25 @@ $(document).ready(function() {
       method: "GET"
     }).then(updatePage);
   });
+
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyB28biNcaTY2Uv-AzmrOI7XI5ZCJVI5BEQ",
+        authDomain: "project-1-8adbf.firebaseapp.com",
+        databaseURL: "https://project-1-8adbf.firebaseio.com",
+        projectId: "project-1-8adbf",
+        storageBucket: "project-1-8adbf.appspot.com",
+        messagingSenderId: "167793891997"
+    };
+    firebase.initializeApp(config);
+    
+    var database = firebase.database();
+
+    database.ref().on("child_added", function (childSnapshot, prevChildKey) {
+
+        console.log(childSnapshot.val());
+
+        var title = childSnapshot.val().title;
+    });
+    
 });
