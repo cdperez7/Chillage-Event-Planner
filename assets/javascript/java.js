@@ -101,7 +101,7 @@ $(document).ready(function() {
 
   //   var marker, i;
 
-  //   var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+    // var map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
   //   var marker = new google.maps.Marker({
   //       position: myLatlng,
