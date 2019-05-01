@@ -1,42 +1,22 @@
-// // Global Variables 
-// // var latlong = {
-// //   latitude: "",
-// //   longitude: "",
-// }
+// var map;
 function initMap() {
-  var map = new google.maps.Map(
-      document.getElementById('map'), {zoom: 4, center: {lat: -25.344, lng: 131.036}});
+  var map = new google.maps.Map(document.getElementById('map'), {
+  center: {lat: -34.397, lng: 150.644},
+  zoom: 8,
+  mapTypeId: google.maps.MapTypeId.ROADMAP
+});
+
+
+//   var infowindow = new google.maps.InfoWindow();
+
+//   var marker, i;
+
+//   setTimeout(function() {
   
-}
-// var map = new google.maps.Map(document.getElementById('map'), {
-//   zoom: 10,
-//   center: {lat: -25.344, lng: 131.036},
-//   mapTypeId: google.maps.MapTypeId.ROADMAP
-// });
+//   }, 1000)
 
-var infowindow = new google.maps.InfoWindow();
+// initMap();
 
-var marker, i;
-
-setTimeout(function() {
-  
-}, 1000)
-
-
-// loop through each location 
-// for (i = 0; i < locations.length; i++) {  
-//   marker = new google.maps.Marker({
-//     position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-//     map: map
-//   });
-
-//   google.maps.event.addListener(marker, 'click', (function(marker, i) {
-//     return function() {
-//       infowindow.setContent(locations[i][0]);
-//       infowindow.open(map, marker);
-//     }
-//   })(marker, i));
-// }
 
 function buildQueryURL() {
   var queryURL = "https://api.eventful.com/json/events/search?...&";
@@ -99,15 +79,21 @@ function updatePage(localEvent) {
       if (venueAddress) {
           $eventListItem.append("<p>" + "Location: " + venueAddress + "</p>");
       }
-
       var latlong = {
-        lat: parseFloat(eventInfo.latitude),
-        lng: parseFloat(eventInfo.longitude)
-      }
-
+          lat: parseFloat(eventInfo.latitude),
+          lng: parseFloat(eventInfo.longitude)
+        };
+  
+        console.log(latlong);
+        }
+      
+        var marker = new google.maps.Marker({
+          position: latlong
+        });
+        marker.setMap(map);
       $eventList.append($eventListItem);
   }
-}
+
 function clear() {
   $("#event-view").empty();
 }
@@ -122,14 +108,8 @@ $("#search-event").on("click", function (event) {
   }).then(updatePage);
 });
 
+
+}
 $( "#explore" ).click(function() {
   console.log( "Handler for .click() called." );
 });
-
-
-//     // <!-- LINK TO JS FILE -->
-//     // <script type=text/javascript src="assets/javascript/java.js"></script>
-
-//     //  <!-- API GOOGLE MAPS-->
-//     //  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB28biNcaTY2Uv-AzmrOI7XI5ZCJVI5BEQ&callback=initMap"
-//     //  async defer></script> -->
