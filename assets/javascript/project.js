@@ -1,21 +1,16 @@
 var map;
 function initMap() {
-  var map = new google.maps.Map(document.getElementById('map'), {
-  center: {lat: -34.397, lng: 150.644},
-  zoom: 8,
-  mapTypeId: google.maps.MapTypeId.ROADMAP
-});
-};
+  var latlong = {lat: 41.8781, lng: -87.6298};
+  var map = new google.maps.Map(document.getElementById('map'), {zoom: 6, center: latlong});
+  // var marker = new google.maps.Marker({position: latlong, map: map});
+  // var infowindow = new google.maps.InfoWindow({content: latlong});
 
-//   var infowindow = new google.maps.InfoWindow();
+  // marker.addListener('click', function() {
+  //   infowindow.open(map, marker);
+  //   console.log('clicked')
+  // });
 
-//   var marker, i;
 
-//   setTimeout(function() {
-  
-//   }, 1000)
-
-// initMap();
 
 $(document).ready(function () {
 
@@ -50,6 +45,14 @@ function buildQueryURL() {
       .val()
       .trim();
 
+      // Firebase Info Push
+      var eventSearch ={
+        event_term: queryParams.q,
+        zip_code: zipCode,
+        }
+      
+      database.ref().push(eventSearch);
+
     if (parseInt(zipCode)) {
       queryParams.location = zipCode;
     }
@@ -58,13 +61,6 @@ function buildQueryURL() {
     console.log(queryURL + $.param(queryParams));
     return queryURL + $.param(queryParams);
 
-  // Firebase Info Push
-    var eventSearch ={
-      event_term: queryParams.q,
-      zip_code: zipCode,
-      }
-    
-    database.ref().push(eventSearch);
   };
 
 function updatePage(localEvent) {
@@ -74,11 +70,11 @@ function updatePage(localEvent) {
   for (var i = 0; i < events.length; i++) {
       var eventInfo = events[i];
       var $eventList = $("<ul>");
-      $eventList.addClass("list-group");
+      $eventList.addClass("list-group" + "<br>");
       $("#event-view").append($eventList);
       var title = eventInfo.title;
       console.log(title);
-      var $eventListItem = $("<li class='list-group-item eventTitle'>");
+      var $eventListItem = $("<li class='list-group-item'>");
       var eventURL = eventInfo.url;
       if (eventURL) {
           console.log(eventURL);
@@ -106,15 +102,24 @@ function updatePage(localEvent) {
         };
   
         console.log(latlong);
-      }
 
         var marker = new google.maps.Marker({
           position: latlong
         });
+
         marker.setMap(map);
-      
+        
+        var infowindow = new google.maps.InfoWindow({
+          content: title
+        });
+
+        google.maps.event.addListener(map, 'click', function() {
+          infowindow.open(map, marker);
+          console.log('clicked');
+        });
 
       $eventList.append($eventListItem);
+     }
   };
 
 function clear() {
@@ -133,3 +138,4 @@ $("#search-event").on("click", function (event) {
 });
 
 });
+};
