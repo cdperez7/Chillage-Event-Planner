@@ -18,7 +18,8 @@
         integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
         crossorigin="anonymous"></script> -->
 
-    <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/5.11.0/firebase.js"></script>
 
     <script type="text/javascript" src="https://api.eventful.com/js/api"></script>
 
@@ -26,7 +27,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
 
 
 
@@ -59,7 +60,7 @@
 
         <div class="row col-12">
             <div class="input-group input-group-lg col-4 offset-1 mt-4">
-                <input type="text" id="zip-code" class="form-control mb-2" aria-label="Sizing example input"
+                <input type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" id="zip-code" maxlength="5" class="form-control mb-2" aria-label="Sizing example input"
                     placeholder="Zip Code" aria-describedby="inputGroup-sizing-sm">
                 <div class="input-group input-group-lg">
                     <input type="text" id="event-type" class="form-control mb-2" aria-label="Sizing example input"
@@ -72,7 +73,7 @@
                 </div> -->
 
                 <div class="mx-auto" id="btnBox">
-                    <button type="button" id="search-event" class="btn btn-lg searchNew mt-3">Let's
+                    <button type="button" id="search-event" class="btn btn-lg searchNew animated-button victoria-two mt-3">Let's
                         Go!
                     </button>
                 </div>
@@ -87,7 +88,9 @@
 
         </div>
 
-        <div class="row col-12 overlay text-center mt-5 mb-5">
+        <br><br><br>
+
+        <div class="row col-8 offset-2 overlay text-center mt-5 mb-5">
             <!-- <h3 class="col-12">Events populate here</h1> -->
                 <div id="event-view"></div>
         </div>
@@ -95,7 +98,7 @@
 
 
         <div class="container-fluid">
-            <div class="row col 12">
+            <div class="row">
                 <footer class="page-footer col-12 font-small overlay text-center mt-5">
                     <div class="footer-copyright text-center py-3">© Sujit Shah, Connor Perez, Patricia Dalinis, Dan
                         Longo 2019</div>

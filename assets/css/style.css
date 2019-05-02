@@ -1,6 +1,7 @@
-#map{
+#map {
     position: inherit !important;
-}    
+}
+
 #myVideo {
     position: fixed;
     right: 0;
@@ -19,49 +20,48 @@
     z-index: 1;
 }
 
-.container h1{
+.container h1 {
     font-size: 7rem;
-    color:#39e9e0;
+    color: #39e9e0;
     text-shadow: 5px 5px 7px black;
 }
 
-.container h2{
+.container h2 {
     font-size: 2rem;
-    color:#39e9e0;
+    color: #39e9e0;
     text-shadow: 3px 3px 5px black;
-
 }
 
-span{
+span {
     border-bottom-color: black;
     border-bottom-style: solid;
 }
 
-.container{
+.container {
     margin: 0 auto;
 }
 
-.container a{
-    color:#39e9e0;
+.container a {
+    color: #39e9e0;
     text-shadow: 5px 5px 7px black;
 }
 
-.container button{
+.container button {
     background-color: #39e9e0;
 }
 
-.container h3{
+.container h3 {
     font-size: 3rem;
-    color:#39e9e0;
+    color: #39e9e0;
     text-shadow: 5px 5px 7px black;
 }
 
-.container footer{
+.container footer {
     font-size: 1rem;
-    color:#39e9e0;
+    color: #39e9e0;
 }
 
-.mapcontainer{
-
-    
+p {
+    color: white;
+    font-size: 3em;
 }

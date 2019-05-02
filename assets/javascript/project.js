@@ -1,11 +1,11 @@
-// var map;
+var map;
 function initMap() {
   var map = new google.maps.Map(document.getElementById('map'), {
   center: {lat: -34.397, lng: 150.644},
   zoom: 8,
   mapTypeId: google.maps.MapTypeId.ROADMAP
 });
-
+};
 
 //   var infowindow = new google.maps.InfoWindow();
 
@@ -17,28 +17,55 @@ function initMap() {
 
 // initMap();
 
+$(document).ready(function () {
+
+// Initalize Firebase
+var config = {
+  apiKey: "AIzaSyBRwD61vwENVUAeH_NHl-y29Ghjbe_UYNA",
+  authDomain: "new-test-5bd5e.firebaseapp.com",
+  databaseURL: "https://new-test-5bd5e.firebaseio.com",
+  projectId: "new-test-5bd5e",
+  storageBucket: "new-test-5bd5e.appspot.com",
+  messagingSenderId: "324295534431"
+};
+firebase.initializeApp(config);
+
+var database = firebase.database();
 
 function buildQueryURL() {
-  var queryURL = "https://api.eventful.com/json/events/search?...&";
-  var queryParams = {
-      "app_key": "Cc5b498hZCQZ9P8m",
-      "oauth_fields": "4c420762561519b874ff",
-      "page_numbers": "1",
-      "page_size": "5",
-  }
-  queryParams.q = $("#event-type")
+    var queryURL = "https://api.eventful.com/json/events/search?...&";
+
+    var queryParams = {
+      app_key: "Cc5b498hZCQZ9P8m",
+      oauth_fields: "4c420762561519b874ff",
+      page_numbers: "1",
+      page_size: "5"
+    };
+
+    queryParams.q = $("#event-type")
       .val()
       .trim();
-  var zipCode = $("#zip-code")
+
+    var zipCode = $("#zip-code")
       .val()
       .trim();
-  if (parseInt(zipCode)) {
+
+    if (parseInt(zipCode)) {
       queryParams.location = zipCode;
-  }
-  console.log("---------------\nURL: " + queryURL + "\n---------------");
-  console.log(queryURL + $.param(queryParams));
-  return queryURL + $.param(queryParams);
-}
+    }
+    
+    console.log("---------------\nURL: " + queryURL + "\n---------------");
+    console.log(queryURL + $.param(queryParams));
+    return queryURL + $.param(queryParams);
+
+  // Firebase Info Push
+    var eventSearch ={
+      event_term: queryParams.q,
+      zip_code: zipCode,
+      }
+    
+    database.ref().push(eventSearch);
+  };
 
 function updatePage(localEvent) {
   console.log(localEvent);
@@ -56,17 +83,11 @@ function updatePage(localEvent) {
       if (eventURL) {
           console.log(eventURL);
           $eventListItem.append(
-              "<span class='label label-primary'>" +
-              "</span>" +
-              "<strong> " +
-              title +
-              "</strong>"
+              "<h4>" + title +
+              "</h4>"
           );
       }
-      var eventImage = eventInfo.image.medium.url;
-      if (eventImage) {
-          $eventListItem.append("<img src=" + eventImage + ">");
-      }
+
       var description = eventInfo.description;
       if (description) {
           $eventListItem.append("<p>" + "Description: " + description + "</p>");
@@ -85,18 +106,21 @@ function updatePage(localEvent) {
         };
   
         console.log(latlong);
-        }
-      
+      }
+
         var marker = new google.maps.Marker({
           position: latlong
         });
         marker.setMap(map);
+      
+
       $eventList.append($eventListItem);
-  }
+  };
 
 function clear() {
   $("#event-view").empty();
-}
+};
+
 $("#search-event").on("click", function (event) {
   event.preventDefault();
   clear();
@@ -108,8 +132,4 @@ $("#search-event").on("click", function (event) {
   }).then(updatePage);
 });
 
-
-}
-$( "#explore" ).click(function() {
-  console.log( "Handler for .click() called." );
 });
