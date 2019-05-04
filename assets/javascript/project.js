@@ -110,10 +110,10 @@ function updatePage(localEvent) {
         marker.setMap(map);
         
         var infowindow = new google.maps.InfoWindow({
-          content: title
+          content: title,
         });
 
-        google.maps.event.addListener(map, 'click', function() {
+        marker.addListener('click', function() {
           infowindow.open(map, marker);
           console.log('clicked');
         });
