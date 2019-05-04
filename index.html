@@ -1,185 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Project One</title>
+    <title>Chillage</title>
 
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <!-- <img src="https://mdbootstrap.com/img/logo/mdb-transparent-250px.png" class="animated bounce infinite" alt="Transparent MDB Logo" id="animated-img1"> -->
 
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
         integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
         crossorigin="anonymous"></script> -->
 
+
+    <script type="text/javascript" src="https://api.eventful.com/js/api"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/5.11.0/firebase.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" -->
-    
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
+
 
 
 </head>
 
 <body>
-        
-    <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top py-0">
+    <div class="container">
+        <video autoplay muted loop id="myVideo">
+            <source src="assets/images/Cheer-Up.mp4" type="video/mp4">
+        </video>
+
+
+
+        <div class="row col-12 overlay text-center mt-5">
+            <p class="col-2"></p>
+            <img src="assets/images/circle logo.jpg" style="height:150px;width:150px;" class="pr-2" alt="Logo image">
+            <h1>Chillage</h1>
+        </div>
+
+        <div class="row col-12 overlay text-center">
+            <h2 class="col-12"><span>Find Events Near You!</span></h2>
+        </div>
+
+        <div class="row col-12 overlay text-center">
+            <a href="" class="nav-link col-4" href="#"></a>
+            <a href="index.html" class="nav-link col-1 ml-5 font-weight-bold" href="#">Home</a>
+            <a href="about.html" class="nav-link col-1 font-weight-bold" href="#">About</a>
+            <a href="contact.html" class="nav-link col-1 font-weight-bold" href="#">Contact</a>
+        </div>
+        <br>
+
+        <div class="row col-12">
+            <div class="input-group input-group-lg col-4 offset-1 mt-4">
+                <input type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" id="zip-code" maxlength="5" class="form-control mb-2" aria-label="Sizing example input"
+                    placeholder="Zip Code" aria-describedby="inputGroup-sizing-sm">
+                <div class="input-group input-group-lg">
+                    <input type="text" id="event-type" class="form-control mb-2" aria-label="Sizing example input"
+                        placeholder="Event Keyword (ex. music)" aria-describedby="inputGroup-sizing-sm">
+                </div>
+
+                <!-- <div class="input-group input-group-lg">
+                    <input type="text" id="inputPrice" class="form-control" aria-label="Sizing example input"
+                        placeholder="Price range" aria-describedby="inputGroup-sizing-sm">
+                </div> -->
+
+                <div class="mx-auto" id="btnBox">
+                    <button type="button" id="search-event" class="btn btn-lg searchNew animated-button victoria-two mt-3">Let's
+                        Go!
+                    </button>
+                </div>
+            </div>
+
+            <div class="mapcontainer col-4 offset-3">
+                <div id="map" style="height: 140%;"></div>
+            </div>
+
+
+
+
+        </div>
+
+        <br><br><br>
+
+        <div class="row col-8 offset-2 overlay text-center mt-5 mb-5">
+            <!-- <h3 class="col-12">Events populate here</h1> -->
+                <div id="event-view"></div>
+        </div>
+
+
+
         <div class="container-fluid">
-            <a class="navbar-brand py-0" href="#">
-                <img id="logo1" src="/assets/images/Potential Logo 3.png" style="height:50px;width:200px;" alt="logo">
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a href="" class="nav-link" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="" class="nav-link" href="#">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="" class="nav-link" href="#">Gallery</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="" class="nav-link" href="#">Contact</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-
-    <!--JUMBOTRON-->
-    <!-- <div class="jumbotron text-center col-md-6">
-        <h1 class="display-3"></h1>
-        <img src="assets/images/Potential Logo.PNG" style="height:200px;height:200px;" alt="Image here">
-        <p class="lead">The ChiTown’s Ultimate Events Spot</p>
-        <a class="btn btn-primary btn-lg" href="#" role="button">Explore</a>
-    </div> -->
-
-
-    <!-- JUMBOTRON -->
-    <div class="row">
-            <div class="jumbotron text-center col-md-6 bg-white">
-                    <h1 class="display-3"></h1>
-                    <img src="assets/images/Potential Logo.PNG" style="height:200px;height:200px;" alt="Image here">
-                    <p class="lead">The ChiTown’s Ultimate Events Spot</p>
-                    <a class="btn btn-primary btn-lg" href="#" role="button">Explore</a>
-                </div>
-        <div class="col-md-6">
-            <div class="jumbotron jumbotron-fluid bg-white" id="jumbotron">
-                <div class="container">
-
-                    <div class="input-group input-group-lg">
-                        <input type="text" id="inputEvent" class="form-control mb-2" aria-label="Sizing example input"
-                            placeholder="Zip Code" aria-describedby="inputGroup-sizing-sm">
-                        <div class="input-group input-group-lg">
-                            <input type="text" id="inputEvent" class="form-control mb-2" aria-label="Sizing example input"
-                                placeholder="Search Events" aria-describedby="inputGroup-sizing-sm">
-                        </div>
-
-                        <div class="input-group input-group-lg">
-                                <input type="text" id="inputEvent" class="form-control" aria-label="Sizing example input"
-                                    placeholder="Price range" aria-describedby="inputGroup-sizing-sm">
-                            </div>
-                        
-                        <div class="mx-auto" id="btnBox">
-                                <button type="button" id="search" class="btn btn-primary btn-lg searchNew mt-3">Let's
-                                    go!
-                                </button>
-                            </div>
-                    </div>
-                </div>
+            <div class="row">
+                <footer class="page-footer col-12 font-small overlay text-center mt-5">
+                    <div class="footer-copyright text-center py-3">© Sujit Shah, Connor Perez, Patricia Dalinis, Dan
+                        Longo 2019</div>
+                </footer>
             </div>
         </div>
     </div>
 
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB28biNcaTY2Uv-AzmrOI7XI5ZCJVI5BEQ&callback=initMap"></script>
 
-    <!-- SEARCH BUTTON -->
-    <div class="row">
-        <!-- <div class="mx-auto" id="btnBox">
-            <button type="button" id="search" class="btn btn-primary btn-lg searchNew">Let's
-                go!
-            </button>
-        </div> -->
-    </div>
-
-    <div class="row" style="padding: 1%;"></div>
+    <script type="text/javascript"></script>
+   
+    <script type=text/javascript src="/assets/javascript/project.js"></script>
     
-    <!-- WEATHER DISPLAY -->
-    <div class="row">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title" id="temperature">Weather</h5>
-                    <p class="card-text" id="max-min-temp"></p>
-                    <p class="card-text" id="wcondition"></p>
-                    <p class="card-text" id="wind"></p>
-                    <p class="card-text" id="humidity"></p>
-                </div>
-            </div>
-        </div>
-
-
-        <!-- MAP DISPLAY -->
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-body mapGoogle">
-                    <div>
-                        <div id="map-display"></div>
-                    </div>
-                    <div class="col-md-2 events">
-                        <button type="button" class="btn btn-light" id="Music">MUSIC</button>
-                    </div>
-                    <div class="col-md-2 events">
-                        <button type="button" class="btn btn-light" id="Food">FOOD</button>
-                    </div>
-                    <div class="col-md-2 events">
-                        <button type="button" class="btn btn-light" id="Sports">SPORTS</button>
-                    </div>
-                    <div class="col-md-2 events">
-                        <button type="button" class="btn btn-light" id="Comedy">COMEDY</button>
-                    </div>
-                    <div class="col-md-2 events">
-                        <button type="button" class="btn btn-light" id="Sports">Tours</button>
-                    </div>
-                    <div class="col-md-2 events">
-                        <button type="button" class="btn btn-light" id="Comedy">Art</button>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row" style="padding: 1%;"></div>
-    <footer class="footer">
-
-        <div class="container text-center">
-    
-            <p id="footer">© Sujit Shah, T Connor Perez, Patricia dalinis, Dan Longo  2019</p>
-    
-        </div>
-    
-     </footer>
-
-      <!-- LINK TO JS FILE -->
-    <script type=text/javascript src="assets/javascript/java.js"></script>
-
-     <!-- API GOOGLE MAPS-->
-     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB28biNcaTY2Uv-AzmrOI7XI5ZCJVI5BEQ&callback=initMap"
-     async defer></script> -->
-
-
-
-
 </body>
 
-</html>
