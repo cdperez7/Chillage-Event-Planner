@@ -14,7 +14,7 @@ The front end contains a video of a concert in the background and is pushed to t
 
 ![Chillage2](https://i.imgur.com/O786lRL.png)
 
-## Technologies Used
+### Technologies Used
 * HTML
 * CSS
 * Bootstrap
