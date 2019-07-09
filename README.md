@@ -2,7 +2,7 @@
 
 ## Team Members
 Connor Perez, Patricia Dalinis, Daniel Longo. 
-Project deployed here: https://cdperez7.github.io/project1/
+Project deployed here: https://cdperez7.github.io/Chillage-Event-Planner/
 
 ### Project Description
 For our First Project, we've created an application that will allow users to see local events they might be interested in. Users will input an event keyword and their zip code. The app will then generate a list of events depending on user input and also display the exact locations on the Google Map. 
