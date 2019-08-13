@@ -12,7 +12,7 @@ The front end contains a video of a concert in the background and is pushed to t
 
 ![Chillage](https://i.imgur.com/EHr1q18.png)
 
-![Chillage2](https://i.imgur.com/O786lRL.png)
+![Chillage2](https://i.imgur.com/LOIXIdt.png)
 
 ### Technologies Used
 * HTML
